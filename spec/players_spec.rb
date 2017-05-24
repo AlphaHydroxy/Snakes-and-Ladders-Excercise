@@ -25,5 +25,10 @@ class TestPlayer < MiniTest::Test
     assert_equal(4, @player2.position)
   end
 
+  def test_change_position()
+    @player2.change_position(3)
+    assert_equal(3, @player2.position)
+  end
+
 
 end

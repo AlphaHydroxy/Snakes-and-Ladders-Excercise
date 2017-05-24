@@ -3,27 +3,35 @@ class Game
     @players = players
     @board = board
     @s_and_l = s_and_l
+    @dice = ((1..6).to_a)
+    @winner = false
   end
 
-  def snake_or_ladder_check(players, s_or_l)
-    for player in players
+  def snake_or_ladder_check(player, s_or_l)
     position = player.position
     for snakesorladders in s_or_l
       if position == snakesorladders.start
         player.change_position(snakesorladders.finish)
       end
     end
-    end
   end
 
   def win(player)
     position = player.position
-    if position == 100
-      return "You've Won!"
+    if position >= 100
+      @winner = true
     end
   end
-end
 
-def play_game()
+  def play_game()
+    while @winner == false do
+      for player in @players
+        player.add_position(@dice.sample)
+        snake_or_ladder_check(player, @s_and_l)
+        win(player)
+      end
 
+    end
+    return "You've Won!"
+  end
 end
