@@ -14,6 +14,10 @@ class Players
 
   def add_position(num)
     @position += num
+    if @position >= 100
+      @position = 100
+    end
+    puts "#{@name} has moved to square #{@position}."
   end
 
   def change_position(num)

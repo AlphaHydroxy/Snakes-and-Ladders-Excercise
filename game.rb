@@ -32,6 +32,7 @@ class Game
       end
 
     end
+    puts "#{player.name} won!"
     return "You've Won!"
   end
 end

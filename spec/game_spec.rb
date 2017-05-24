@@ -20,14 +20,18 @@ class TestGame < MiniTest::Test
     @game = Game.new(@players, @board, @s_and_l)
   end
 
-  # def test_roll_dice()
-  #   assert_equal(1, @dice.sample())
-  # end
+  def test_roll_dice()
+    expected = ((1..6).to_a)
+    actual = expected.include?(@dice.sample)
+    assert_equal(true, actual)
+  end
 
-  # def test_change_position_with_dice()
-  #   @player1.add_position(@dice.sample)
-  #   assert_equal(4, @player1.position)
-  # end
+  def test_change_position_with_dice()
+    
+    @player1.add_position(@dice.sample)
+    actual = ((2..7).to_a.include?(@player1.position))
+    assert_equal(true, actual)
+  end
 
   def test_landing_on_ladder()
     @player1.change_position(26)
